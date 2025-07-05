@@ -6,7 +6,7 @@ Handles initializing and running the main program loop.
 """
 
 import logging
-from modules import summarize, tts, resource_fetcher, question_recommender
+from modules import summarize, tts, resource_fetcher, question_recommender, usage_guide
 
 logging.basicConfig(
     level=logging.INFO,
@@ -23,8 +23,9 @@ def main():
     logging.info("2. Get study resources")
     logging.info("3. Practice questions")
     logging.info("4. Hear a response")
+    logging.info("5. Help!")
 
-    choice = input("Choose an option (1-4): ")
+    choice = input("Choose an option (1-5): ")
 
     if choice == "1":
         topic = input("Enter topic: ")
@@ -45,6 +46,9 @@ def main():
     elif choice == "4":
         text = input("Enter what you want to hear: ")
         tts.speak(text)
+
+    elif choice == "5":
+        usage_guide.show_help()
 
     else:
         logging.error("❌ Invalid choice. Exiting.")
